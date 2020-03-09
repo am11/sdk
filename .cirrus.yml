@@ -1,0 +1,17 @@
+osx_instance:
+  image: catalina-xcode
+
+task:
+  print mac version_script: sw_vers
+
+  install dotnet_script: brew cask install dotnet-sdk
+
+  print dotnet info_script: dotnet --info
+
+  create app_script: dotnet new console --output /tmp/hwapp --force
+
+  build app_script: dotnet build /p:UseAppHost=true  /tmp/hwapp
+
+  inspect executable_script: |
+    ls /tmp/hwapp/bin/Debug/netcoreapp3.1/
+    file /tmp/hwapp/bin/Debug/netcoreapp3.1/hwapp
