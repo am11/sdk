@@ -48,6 +48,11 @@ namespace Microsoft.DotNet.Cli.Telemetry
 
         private static bool ReadProcToDetectDockerInLinux()
         {
+            if (!File.Exists("/proc/1/cgroup"))
+            {
+                return false;
+            }
+
             return File
                 .ReadAllText("/proc/1/cgroup")
                 .Contains("/docker/");
