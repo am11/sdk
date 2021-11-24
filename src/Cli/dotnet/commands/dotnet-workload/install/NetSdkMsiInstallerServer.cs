@@ -134,8 +134,7 @@ namespace Microsoft.DotNet.Workloads.Workload.Install
 
             // Best effort to verify that the server was not started indirectly or being spoofed.
             if ((ParentProcess == null) || (ParentProcess.StartTime > CurrentProcess.StartTime) ||
-                string.IsNullOrWhiteSpace(CurrentProcess.MainModule.FileName) ||
-                !string.Equals(ParentProcess.MainModule.FileName, CurrentProcess.MainModule.FileName, StringComparison.OrdinalIgnoreCase))
+                !string.Equals(ParentProcess.MainModule.FileName, Environment.ProcessPath, StringComparison.OrdinalIgnoreCase))
             {
                 throw new SecurityException(String.Format(LocalizableStrings.NoTrustWithParentPID, ParentProcess?.Id));
             }

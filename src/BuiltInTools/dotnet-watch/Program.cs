@@ -264,7 +264,7 @@ Examples:
                 trace: false);
             var processInfo = new ProcessSpec
             {
-                Executable = DotnetMuxer.MuxerPath,
+                Executable = Environment.ProcessPath,
                 WorkingDirectory = Path.GetDirectoryName(projectFile),
                 Arguments = args,
                 EnvironmentVariables =

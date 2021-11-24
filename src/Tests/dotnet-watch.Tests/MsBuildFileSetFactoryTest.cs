@@ -328,7 +328,7 @@ namespace Microsoft.DotNet.Watcher.Tools
 
             var output = new OutputSink();
             var options = GetWatchOptions();
-            var filesetFactory = new MsBuildFileSetFactory(options, DotNetHostPath, _reporter, projectA, output, waitOnError: false, trace: true);
+            var filesetFactory = new MsBuildFileSetFactory(options, _reporter, projectA, output, waitOnError: false, trace: true);
 
             var fileset = await GetFileSet(filesetFactory);
 
@@ -363,7 +363,7 @@ namespace Microsoft.DotNet.Watcher.Tools
         private Task<FileSet> GetFileSet(string projectPath)
         {
             DotNetWatchOptions options = GetWatchOptions();
-            return GetFileSet(new MsBuildFileSetFactory(options, DotNetHostPath, _reporter, projectPath, new OutputSink(), waitOnError: false, trace: false));
+            return GetFileSet(new MsBuildFileSetFactory(options, _reporter, projectPath, new OutputSink(), waitOnError: false, trace: false));
         }
 
         private static DotNetWatchOptions GetWatchOptions() => 
