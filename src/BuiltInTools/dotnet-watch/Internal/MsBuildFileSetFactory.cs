@@ -90,7 +90,7 @@ namespace Microsoft.DotNet.Watcher.Internal
 
                     var processSpec = new ProcessSpec
                     {
-                        Executable = Environment.ProcessPath,
+                        Executable = DotnetMuxer.MuxerPath,
                         WorkingDirectory = projectDir,
                         Arguments = arguments,
                         OutputCapture = capture

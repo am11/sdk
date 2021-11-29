@@ -22,8 +22,6 @@ namespace Microsoft.DotNet.Watcher.Tools
         private readonly IReporter _reporter;
         private readonly TestAssetsManager _testAssets;
 
-        private static string DotNetHostPath => TestContext.Current.ToolsetUnderTest.DotNetHostPath;
-
         public MsBuildFileSetFactoryTest(ITestOutputHelper output)
         {
             _reporter = new TestReporter(output);

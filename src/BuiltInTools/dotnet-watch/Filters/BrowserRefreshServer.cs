@@ -237,7 +237,7 @@ namespace Microsoft.DotNet.Watcher.Tools
         {
             try
             {
-                using var process = Process.Start(Environment.ProcessPath, "dev-certs https --check --quiet");
+                using var process = Process.Start(DotnetMuxer.MuxerPath, "dev-certs https --check --quiet");
                 await process.WaitForExitAsync().WaitAsync(TimeSpan.FromSeconds(10));
                 return process.ExitCode == 0;
             }

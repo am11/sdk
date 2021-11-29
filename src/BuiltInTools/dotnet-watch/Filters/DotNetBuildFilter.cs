@@ -32,7 +32,7 @@ namespace Microsoft.DotNet.Watcher.Tools
 
                 var processSpec = new ProcessSpec
                 {
-                    Executable = Environment.ProcessPath,
+                    Executable = DotnetMuxer.MuxerPath,
                     Arguments = arguments,
                     WorkingDirectory = context.ProcessSpec.WorkingDirectory,
                 };
