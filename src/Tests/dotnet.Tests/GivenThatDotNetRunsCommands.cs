@@ -46,7 +46,7 @@ namespace Microsoft.DotNet.Tests
         public void GivenAMissingHomeVariableItPrintsErrorMessage(string value)
         {
             new DotnetCommand(Log)
-                .WithEnvironmentVariable(CliFolderPathCalculator.PlatformHomeVariableName, value)
+                .WithEnvironmentVariable(OperatingSystem.IsWindows() ? "USERPROFILE" : "HOME", value)
                 .WithEnvironmentVariable(CliFolderPathCalculator.DotnetHomeVariableName, "")
                 .Execute("--help")
                 .Should()
