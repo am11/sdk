@@ -78,7 +78,7 @@ Copyright (c) .NET Foundation. All rights reserved.
   <PropertyGroup Condition="'$(UseCurrentRuntimeIdentifier)' == ''">
     <UseCurrentRuntimeIdentifier Condition="
                  '$(RuntimeIdentifier)' == '' and
-                 '$(_IsExecutable)' == 'true' and '$(IsTestProject)' != 'true' and
+                 ('$(_IsExecutable)' == 'true' and '$(IsTestProject)' != 'true' or '$(PublishAot)' == 'true') and
                  '$(IsRidAgnostic)' != 'true' and
                  (
                    '$(SelfContained)' == 'true' or
@@ -147,6 +147,8 @@ Copyright (c) .NET Foundation. All rights reserved.
   <PropertyGroup>
     <!-- Detecting property presence is not harmful and can be done in an unconditioned way -->
     <_SelfContainedWasSpecified Condition="'$(SelfContained)' != ''">true</_SelfContainedWasSpecified>
+    <!-- PublishAot implies SelfContained -->
+    <SelfContained Condition="'$(SelfContained)' == '' and '$(PublishAot)' == 'true'">true</SelfContained>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' and '$(HasRuntimeOutput)' == 'true'">
     <SelfContained Condition="'$(SelfContained)' == '' and '$(RuntimeIdentifier)' != ''">true</SelfContained>
