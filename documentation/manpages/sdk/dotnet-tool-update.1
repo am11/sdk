@@ -14,11 +14,11 @@
 . ftr VB CB
 . ftr VBI CBI
 .\}
-.TH "dotnet-tool-update" "1" "2025-06-20" "" ".NET Documentation"
+.TH "dotnet-tool-update" "1" "2025-11-15" "" ".NET Documentation"
 .hy
 .SH dotnet tool update
 .PP
-\f[B]This article applies to:\f[R] \[u2714]\[uFE0F] .NET Core 3.1 SDK and later versions
+\f[B]This article applies to:\f[R] \[u2714]\[uFE0F] .NET 6 SDK and later versions
 .SH NAME
 .PP
 dotnet-tool-update - Updates the specified .NET tool on your machine.
@@ -71,6 +71,9 @@ To update a local tool, use the \f[V]--local\f[R] option.
 .RS 2
 .PP
 Name/ID of the NuGet package that contains the .NET global tool to update.
+.PP
+Starting in .NET 10.0.100 SDK, use the name/ID, and version separated by \f[V]\[at]\f[R] to update a .NET tool.
+.PP
 You can find the package name using the dotnet tool list command.
 .RE
 .SH OPTIONS
@@ -228,10 +231,16 @@ Updates the dotnetsay (https://www.nuget.org/packages/dotnetsay/) local tool ins
 Updates the dotnetsay (https://www.nuget.org/packages/dotnetsay/) global tool to the latest patch version, with a major version of \f[V]2\f[R], and a minor version of \f[V]0\f[R].
 .RE
 .IP \[bu] 2
-\f[B]\f[VB]dotnet tool update -g dotnetsay --version (2.0.*,2.1.4)\f[B]\f[R]
+\f[B]\f[VB]dotnet tool update -g dotnetsay\[at]2.1.7*\f[B]\f[R]
 .RS 2
 .PP
-Updates the dotnetsay (https://www.nuget.org/packages/dotnetsay/) global tool to the lowest version within the specified range \f[V](> 2.0.0 && < 2.1.4)\f[R], version \f[V]2.1.0\f[R] would be installed.
+Updates the dotnetsay (https://www.nuget.org/packages/dotnetsay/) global tool to the latest patch version, 2.1.7.
+.RE
+.IP \[bu] 2
+\f[B]\f[VB]dotnet tool update -g dotnetsay --version (2.0.0,2.1.7)\f[B]\f[R]
+.RS 2
+.PP
+Updates the dotnetsay (https://www.nuget.org/packages/dotnetsay/) global tool to the lowest version within the specified range \f[V](> 2.0.0 && < 2.1.7)\f[R], version \f[V]2.1.0\f[R] would be installed.
 For more information on semantic versioning ranges, see NuGet packaging version ranges.
 .RE
 .SH SEE ALSO

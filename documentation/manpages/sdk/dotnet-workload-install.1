@@ -14,7 +14,7 @@
 . ftr VB CB
 . ftr VBI CBI
 .\}
-.TH "dotnet-workload-install" "1" "2025-06-13" "" ".NET Documentation"
+.TH "dotnet-workload-install" "1" "2025-11-15" "" ".NET Documentation"
 .hy
 .SH dotnet workload install
 .PP
@@ -186,14 +186,11 @@ The default is \f[V]minimal\f[R].
 If you specify \f[V]detailed\f[R] or \f[V]diagnostic\f[R] verbosity, the command displays information about the Nuget packages that it downloads.
 .RE
 .IP \[bu] 2
-\f[B]\f[VB]--version\f[B]\f[R]
+\f[B]\f[VB]version <WORKLOAD_VERSION>\f[B]\f[R]
 .RS 2
 .PP
-The workload set version to install or update to.
-If you specify the workload-set version in global.json, you can\[cq]t use the \f[V]--version\f[R] option to specify the workload-set version.
-To make it possible to use the \f[V]--version\f[R] option in that case, run the command outside of the path containing the global.json file.
-Available since 8.0.400 SDK.
-For more information, see .NET SDK workload sets.
+A workload version to display, or one or more workloads and their versions joined by the \f[V]\[at]\f[R] character.
+Support for the \f[V]\[at]\f[R] character is available since 9.0.200 SDK.
 .RE
 .SH EXAMPLES
 .IP \[bu] 2
@@ -213,6 +210,16 @@ Install the \f[V]maui-android\f[R] and \f[V]maui-ios\f[R] workloads:
 .nf
 \f[C]
 dotnet workload install maui-android maui-ios
+\f[R]
+.fi
+.RE
+.IP \[bu] 2
+Install the workload version specified by the \f[V]\[at]\f[R] character:
+.RS 2
+.IP
+.nf
+\f[C]
+dotnet workload install maui\[at]10.0.100
 \f[R]
 .fi
 .RE
