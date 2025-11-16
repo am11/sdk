@@ -14,11 +14,11 @@
 . ftr VB CB
 . ftr VBI CBI
 .\}
-.TH "dotnet-new-install" "1" "2025-06-13" "" ".NET Documentation"
+.TH "dotnet-new-install" "1" "2025-11-15" "" ".NET Documentation"
 .hy
 .SH dotnet new install
 .PP
-\f[B]This article applies to:\f[R] \[u2714]\[uFE0F] .NET Core 3.1 SDK and later versions
+\f[B]This article applies to:\f[R] \[u2714]\[uFE0F] .NET 6 SDK and later versions
 .SH NAME
 .PP
 dotnet-new-install - installs a template package.
@@ -33,7 +33,8 @@ dotnet new install <PATH|NUGET_ID>  [--interactive] [--add-source|--nuget-source
 .SH DESCRIPTION
 .PP
 The \f[V]dotnet new install\f[R] command installs a template package from the \f[V]PATH\f[R] or \f[V]NUGET_ID\f[R] provided.
-If you want to install a specific version or prerelease version of a template package, specify the version in the format \f[V]<package-name>::<package-version>\f[R].
+If you want to install a specific version or prerelease version of a template package, specify the version in the format \f[V]<package-name>\[at]<package-version>\f[R].
+(The colon separator \f[V]::\f[R] was deprecated in favor of the \f[V]\[at]\f[R] character in .NET 9.0.200 SDK.)
 By default, \f[V]dotnet new\f[R] passes * for the version, which represents the latest stable package version.
 For more information, see the Examples section.
 .PP
@@ -69,6 +70,10 @@ Additionally, tab completion is now available for \f[V]dotnet new\f[R].
 It supports completion for installed template names and for the options a selected template provides.
 To activate tab completion for the .NET SDK, see Enable tab completion.
 > > Examples of old syntax: > > - Install the latest version of Azure web jobs project template package: > > \f[V]dotnetcli >   dotnet new --install Microsoft.Azure.WebJobs.ProjectTemplates >\f[R]
+.RS
+.PP
+[!WARNING] Templates can run MSBuild code when triggered, don\[cq]t install or run untrusted .NET templates.
+.RE
 .SH ARGUMENTS
 .IP \[bu] 2
 \f[B]\f[VB]<PATH|NUGET_ID>\f[B]\f[R]
@@ -76,7 +81,8 @@ To activate tab completion for the .NET SDK, see Enable tab completion.
 .PP
 The folder on the file system or the NuGet package identifier to install the template package from.
 \f[V]dotnet new\f[R] attempts to install the NuGet package from the NuGet sources available for the current working directory and the sources specified via the \f[V]--add-source\f[R] option.
-If you want to install a specific version or prerelease version of a template package from NuGet source, specify the version in the format \f[V]<package-name>::<package-version>\f[R].
+If you want to install a specific version or prerelease version of a template package from NuGet source, specify the version in the format \f[V]<package-name>\[at]<package-version>\f[R].
+(The colon separator \f[V]::\f[R] was deprecated in favor of the \f[V]\[at]\f[R] character in .NET 9.0.200 SDK.)
 .RE
 .SH OPTIONS
 .IP \[bu] 2
@@ -148,7 +154,7 @@ Install version 2.0 of the SPA templates for ASP.NET Core:
 .IP
 .nf
 \f[C]
-dotnet new install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0
+dotnet new install Microsoft.DotNet.Web.Spa.ProjectTemplates\[at]2.0.0
 \f[R]
 .fi
 .RE
@@ -158,7 +164,7 @@ Install version 2.0 of the SPA templates for ASP.NET Core from a custom NuGet so
 .IP
 .nf
 \f[C]
-dotnet new install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0 --add-source \[dq]https://api.my-custom-nuget.com/v3/index.json\[dq] --interactive
+dotnet new install Microsoft.DotNet.Web.Spa.ProjectTemplates\[at]2.0.0 --add-source \[dq]https://api.my-custom-nuget.com/v3/index.json\[dq] --interactive
 \f[R]
 .fi
 .RE
